@@ -1,0 +1,22 @@
+NodeJS-Welcome-Server-Dynamic-Webpage
+
+
+This is a rough Express.JS + React.JS webpage using React-router-dom as the router.
+This project is part of my effort of learning/reviewing Express.JS/NodeJS and React.JS.
+I took a lot of code snippets from researching online, and in the future I will update this if I need to,
+ideally with a database.
+
+API uses Express Generator to generate a skeletal MVC shell listening on port http://localhost:3000/
+Client uses React-Creator to create a skeletal React shell, listening on port http://localhost:3000/ but proxying backend port http://localhost:5000/
+
+To start:
+run npm start within both client and API
+
+
+
+
+
+References: 
+
+https://dev.to/nburgess/creating-a-react-app-with-react-router-and-an-express-backend-33l3
+https://www.freecodecamp.org/news/how-to-make-create-react-app-work-with-a-node-backend-api-7c5c48acb1b0/

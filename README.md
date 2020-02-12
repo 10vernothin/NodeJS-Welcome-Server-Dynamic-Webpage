@@ -1,2 +1,0 @@
-# NodeJS-Welcome-Server-Dynamic-Webpage
-This is a rough NodeJS version of the Evermight Project, using a MVC website skeleton built from Express/Express-Engine NPM. I did not design the skeleton, instead, I editted the routing and designed the js form-engine module. The other main differences is that I used LESS/PUG and JSON to store data instead of SQL. The webpage is all back-end. Be weary of readFile/writeFile, for I didn't use a single synchronization regime for it.
