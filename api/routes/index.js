@@ -13,5 +13,10 @@ router.get('/api/getList', function(req, res, next) {
     console.log('Sent list of items');
 });
 
+router.post('/api/login/submit-form', function(req, res, next) {
+    console.log(req.body);
+    res.send(req.body.formControls.email);
+});
+
 
 module.exports = router;

@@ -1,59 +1,4 @@
 import React, { Component } from 'react';
-/*
-class Login extends Component {
-  // Initialize the state
-  constructor(props){
-    super(props);
-    this.state = {
-      user: '',
-	    pass: '',
-	    errmsg: '',
-    }
-  }
-
-  // Fetch the list on first mount
-  componentDidMount() {
-    this.getErrMsg()
-    .then(res => this.setState({ errmsg: res.express }))
-    .catch(err => console.log(err));
-  }
-
-  // Retrieves the list of items from the Express app
-
-  getErrMsg = async () => {
-    const response = await fetch('/api/LoginPrompt');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    
-    return body;
-  };
-
-  render() {
-    const { _state } = this.state;
-
-    return (
-      <div className="App">
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <strong>Post to Server:</strong>
-          </p>
-          <input
-            type="text"
-            value={this.state.user}
-            onChange={e => this.setState({ user: e.target.value })}
-          />
-          <input
-            type=""
-            value={this.state.pass}
-            onChange={e => this.setState({ user: e.target.pass })}
-          />
-          
-        </form>
-      </div>
-    );
-  }
-}
-*/
 
 class Login extends Component {
   
@@ -70,21 +15,23 @@ class Login extends Component {
               password: {
                 value: ''
               }
-          }
+          },
+		  postResponse: ''
       }
     
   }
 
   handleSubmit = async e => {
     e.preventDefault();
-    const response = await fetch('/api/LoginProcesser', {
+    const response = await fetch('/api/login/submit-form', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      state: this.state,
+	  body: JSON.stringify(this.state)
     });
     const body = await response.text();
+    this.setState({ postResponse: body + "Hello"});
   };
   
   changeHandler = event => {
@@ -106,13 +53,12 @@ class Login extends Component {
   
    render() {
       return (
-          <form>
+		  <form method="post" onSubmit={this.handleSubmit}>
               <title>Login</title>
-              <div>
-                Login
-              </div>
+				<div>Login
+				</div>
               <input type="email" 
-                     name="email" 
+                     name="email"
                      value={this.state.formControls.email.value} 
                      onChange={this.changeHandler} 
               />
@@ -129,6 +75,7 @@ class Login extends Component {
                      onChange={this.changeHandler} 
               />
           <button type="submit">Submit</button>
+          <p>Response: {this.state.postResponse}</p>
           </form>      
           
       );
